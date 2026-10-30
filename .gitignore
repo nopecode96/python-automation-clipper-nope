@@ -1,0 +1,33 @@
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables & Secrets (CRITICAL)
+.env
+.env.local
+.env.*.local
+client_secrets.json
+token.pickle
+
+# Temporary work directories & media outputs
+making/*
+!making/.gitkeep
+final/*
+!final/.gitkeep
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Logs
+*.log
