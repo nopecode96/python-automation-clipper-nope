@@ -1,59 +1,60 @@
-# 🎬 Python Automation YouTube Shorts Clipper (Nope Code)
+# 🎬 Automated YouTube Shorts Clipper Pipeline (Nope Code)
 
-Pipeline otomasi cerdas berbasis Python untuk memproduksi video **YouTube Shorts vertikal (9:16)** secara mandiri:
-1. **Scraping & Rotasi Topik Dinamis**: Mencari video wawancara/podcast tokoh teknologi dunia (*Sam Altman, Jensen Huang, Andrej Karpathy, Ilya Sutskever, dll.*) secara acak dan otomatis mencegah duplikasi video yang sudah pernah dibuat.
-2. **Analisis AI (Google Gemini)**: Menganalisis transkrip panjang, menemukan momen viral (30-45 detik), membuat judul *curiosity gap*, deskripsi terstruktur, naskah, serta subtitle bahasa Indonesia.
-3. **Dynamic Layout 9:16**: Background blurred + centered fit (tanpa memotong wajah tokoh di video podcast wide).
-4. **Kinetic Subtitles (.ASS) & BGM**: Subtitle kinetik ber-outline tebal dan pencampuran musik latar via FFmpeg.
-5. **High-Res Pro Poster Thumbnail (1080x1920)**: Pembuatan thumbnail portrait resolusi tinggi bergaya kreator pro menggunakan Pillow (clean frame tanpa subtitle + judul hook raksasa kuning + badge nama tokoh).
-6. **Auto-Upload YouTube Data API v3**: Mengunggah video MP4 dan menyetel thumbnail kustom secara otomatis.
+An intelligent, end-to-end Python automation pipeline designed to autonomously produce viral, vertical **YouTube Shorts (9:16)** from long-form tech interviews and podcasts:
 
----
-
-## 🚀 Fitur Unggulan
-
-- 🧠 **AI-Powered Hook & Clipping**: Gemini secara otomatis memilih 30-45 detik momen paling berbobot.
-- 🎯 **Algoritma Rotasi Dinamis**: Dilengkapi `used_videos.txt` dan generator topik acak sehingga setiap kali skrip dijalankan, tokoh dan videonya selalu berbeda.
-- 🎨 **Pro Poster Thumbnail**: Menghasilkan thumbnail poster HD 1080x1920 dengan tipografi tebal, drop shadow, dan bingkai neon.
-- 🧹 **Auto-Clean Folder**: Menjaga direktori kerja `final/` dan `making/` tetap bersih dan rapi.
-- 📤 **One-Click YouTube Upload**: Otomasi OAuth 2.0 untuk upload Shorts dan pasang thumbnail.
+1. **Dynamic YouTube Scraping & Topic Rotation**: Continuously discovers interviews and keynote speeches from global tech leaders (*Sam Altman, Jensen Huang, Andrej Karpathy, Ilya Sutskever, Demis Hassabis, Elon Musk, Mark Zuckerberg, etc.*) using dynamic Gemini search prompts while maintaining a history log (`used_videos.txt`) to avoid duplicates.
+2. **AI Virality & Segment Analysis (Google Gemini)**: Analyzes full transcripts, identifies the most impactful 30-45 second segment, crafts high-CTR Indonesian titles (*Curiosity Gap*), structured descriptions, scripts, and synchronized subtitles.
+3. **Cinematic 9:16 Dynamic Layout**: Uses an automated blurred vertical background + centered fit foreground via FFmpeg filter graphs, ensuring speakers in wide podcast shots are never awkwardly cropped.
+4. **Kinetic Subtitles (.ASS) & BGM Mixing**: Automatically burns stylized kinetic uppercase subtitles with dark outlines and mixes background music smoothly.
+5. **High-Res Pro Poster Thumbnail (1080x1920)**: Generates creator-grade portrait thumbnail posters using Pillow—complete with clean un-subtitled frames, giant bold hook typography (yellow/cyan), drop shadows, and neon speaker badges.
+6. **One-Click YouTube Data API v3 Upload**: Uploads final MP4 videos with custom metadata and sets the custom thumbnail automatically.
 
 ---
 
-## 📁 Struktur Direktori
+## 🚀 Key Features
+
+- 🧠 **AI-Driven Virality Detection**: Gemini analyzes conversation nuances to extract complete, punchy insights without cutting mid-sentence.
+- 🎯 **Smart Topic Rotation**: Never repeats the same video twice thanks to automated tracking and dynamic prompt generation.
+- 🎨 **Pro-Grade Thumbnails**: Stand out in feeds and search results with 1080x1920 high-resolution posters designed for maximum click-through rate.
+- 🧹 **Self-Cleaning Workspace**: Automatically purges temporary render files to keep storage organized.
+- 📤 **Automated OAuth 2.0 Uploading**: Integrated YouTube Data API support for direct publishing or staging as private drafts.
+
+---
+
+## 📁 Directory Structure
 
 ```text
 clipper-youtube/
-├── assets/                  # Aset statis (misal: bgm.mp3 untuk musik latar)
-├── final/                   # Output siap unggah (video .mp4, poster .jpg, detail .txt, latest_video.json)
-├── making/                  # Ruang kerja sementara & riwayat used_videos.txt
-├── main.py                  # Entry point CLI interaktif untuk menjalankan Process 1 & Process 2
-├── process1.py              # Pipeline ekstraksi video, analisis Gemini, editing FFmpeg, & thumbnail pro
-├── process2.py              # Pipeline autentikasi OAuth & upload video ke YouTube Data API
-├── .env.example             # Template file environment variable
-├── requirements.txt         # Daftar pustaka dependency Python
+├── assets/                  # Static assets (e.g., bgm.mp3 for background audio)
+├── final/                   # Ready-to-publish outputs (.mp4, .jpg poster, _detail.txt, latest_video.json)
+├── making/                  # Temporary render clips, .ass files, and used_videos.txt history
+├── main.py                  # Interactive CLI entrypoint for orchestrating Process 1 & Process 2
+├── process1.py              # Core pipeline: Scraping, Gemini analysis, FFmpeg editing, & Pro thumbnail
+├── process2.py              # YouTube Data API v3 OAuth authentication & upload pipeline
+├── .env.example             # Environment variable template
+├── requirements.txt         # Project dependencies
 └── README.md
 ```
 
 ---
 
-## 🛠️ Prasyarat
+## 🛠️ Prerequisites
 
-- **Python 3.9+** (Disarankan Python 3.10 atau 3.11)
-- **Google Gemini API Key** (Dapatkan gratis di [Google AI Studio](https://aistudio.google.com/))
-- **Google Cloud Console Project** (Aktifkan YouTube Data API v3 jika ingin fitur auto-upload)
+- **Python 3.9+** (Python 3.10 or 3.11 recommended)
+- **Google Gemini API Key** (Obtain for free at [Google AI Studio](https://aistudio.google.com/))
+- **Google Cloud Console Project** (Enable YouTube Data API v3 for automated uploads)
 
 ---
 
-## ⚙️ Panduan Instalasi & Penggunaan
+## ⚙️ Installation & Setup
 
-### 1. Clone Repository
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/nopecode96/python-automation-clipper-nope.git
 cd python-automation-clipper-nope
 ```
 
-### 2. Buat & Aktifkan Virtual Environment
+### 2. Create & Activate a Virtual Environment
 ```bash
 # macOS / Linux:
 python3 -m venv .venv
@@ -64,67 +65,67 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
-### 3. Pasang Dependencies
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Konfigurasi Environment Variable (`.env`)
-Salin file `.env.example` menjadi `.env`, lalu masukkan API Key Anda:
+### 4. Configure Environment Variables (`.env`)
+Copy `.env.example` to create your local `.env` file:
 ```bash
 cp .env.example .env
 ```
 
-Buka file `.env` dan isi:
+Open `.env` and fill in your API key:
 ```env
 GEMINI_API_KEY=your_actual_gemini_api_key_here
 GROQ_API_KEY=your_optional_groq_key_here
 ```
 
-### 5. (Opsional) Konfigurasi YouTube Data API untuk Auto-Upload
-Jika ingin menggunakan modul upload otomatis ([process2.py](process2.py)):
-1. Buat project di [Google Cloud Console](https://console.cloud.google.com/).
-2. Aktifkan **YouTube Data API v3**.
-3. Buat **OAuth 2.0 Client ID** (Application type: Desktop App).
-4. Download file kredensial JSON dan simpan di root direktori dengan nama:
+### 5. (Optional) Configure YouTube Data API for Auto-Upload
+If you plan to use the automated upload module ([process2.py](process2.py)):
+1. Create a project in [Google Cloud Console](https://console.cloud.google.com/).
+2. Enable **YouTube Data API v3**.
+3. Create an **OAuth 2.0 Client ID** (Application type: *Desktop App*).
+4. Download the JSON credentials file, rename it to `client_secrets.json`, and place it in the project root:
    ```text
    client_secrets.json
    ```
-5. *(Opsional)* Letakkan musik latar santai di folder `assets/bgm.mp3` untuk efek background audio otomatis.
+5. *(Optional)* Place an audio track at `assets/bgm.mp3` for automatic background music ducking.
 
 ---
 
-## 🎬 Menjalankan Skrip
+## 🎬 How to Run
 
-### Opsi A: Jalankan Pipeline Penuh (Interaktif)
+### Option A: Full Pipeline (Interactive CLI)
 ```bash
 python main.py
 ```
-- Anda dapat menekan **ENTER** untuk memilih topik trending acak secara otomatis, atau mengetikkan nama tokoh/topik tertentu.
-- Di akhir pemrosesan, skrip akan menanyakan konfirmasi apakah ingin langsung mengunggah video ke YouTube beserta privasinya (*Private/Unlisted/Public*).
+- Press **ENTER** to automatically select a fresh trending AI topic, or type a custom topic/speaker name.
+- Upon completion, the script prompts you whether to upload immediately to YouTube with your preferred visibility (*Private / Unlisted / Public*).
 
-### Opsi B: Hanya Membuat Video & Thumbnail (Process 1)
+### Option B: Video Generation Only (Process 1)
 ```bash
 python process1.py
 ```
-Hasil akhir akan tersimpan di dalam folder `final/`:
-- `final/short_<timestamp>.mp4` (Video vertikal 9:16 ber-subtitle kinetik)
-- `final/short_<timestamp>_thumb.jpg` (Poster thumbnail pro 1080x1920)
-- `final/short_<timestamp>_detail.txt` (Ringkasan judul, caption, naskah Indonesia & Inggris)
-- `final/latest_video.json` (Data integrasi upload)
+Outputs generated in the `final/` directory:
+- `final/short_<timestamp>.mp4`: 9:16 vertical video with kinetic subtitles & BGM.
+- `final/short_<timestamp>_thumb.jpg`: 1080x1920 Pro poster thumbnail.
+- `final/short_<timestamp>_detail.txt`: Complete summary containing titles, captions, Indonesian & English scripts, and original source URLs.
+- `final/latest_video.json`: Metadata descriptor for automated upload staging.
 
-### Opsi C: Hanya Mengunggah Video Terbaru (Process 2)
+### Option C: YouTube Upload Only (Process 2)
 ```bash
 python process2.py
 ```
-Akan membaca file `final/latest_video.json` dan mengunggah video beserta thumbnail kustom ke channel YouTube Anda.
+Reads the latest video info from `final/latest_video.json` and uploads both the video and custom thumbnail to your YouTube channel.
 
 ---
 
-## 🔒 Catatan Keamanan
-Jangan pernah mem-push file `.env`, `client_secrets.json`, atau `token.pickle` ke publik. File-file tersebut sudah dimasukkan ke dalam `.gitignore` bawaan.
+## 🔒 Security Notice
+Never commit or share your `.env`, `client_secrets.json`, or `token.pickle` files. These sensitive items are ignored by default via [.gitignore](.gitignore).
 
 ---
 
-## 👨‍💻 Kontributor
-**Nope Code** - *AI, Coding & Technology Automation*
+## 👨‍💻 Maintainer
+**Nope Code** - *AI, Coding & Tech Automation*
